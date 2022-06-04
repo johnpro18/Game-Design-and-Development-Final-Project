@@ -60,11 +60,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Mathf.Abs(movement.x) > 0.1f || Mathf.Abs(movement.y) > 0.1f)
         {
-            animator.SetBool("IsMoving", true);
+            animator.SetBool("Run", true);
         }
         else
         {
-            animator.SetBool("IsMoving", false);
+            animator.SetBool("Run", false);
         }
     }
 

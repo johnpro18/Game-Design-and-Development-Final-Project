@@ -55,13 +55,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if(currentShield > 0)
         {
-            currentShield -= damage;
+            currentShield = Mathf.Clamp(currentShield - damage, 0, maxShield);
             shieldBar.SetShield(currentShield);
             animator.SetTrigger("Hurt");
         }
         else
         {
-            currentHealth -= damage;
+            currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
             healthBar.SetHealth(currentHealth);
             animator.SetTrigger("Hurt");
 
@@ -75,5 +75,10 @@ public class PlayerHealth : MonoBehaviour
                 GetComponent<PlayerWeapon>().enabled = false;
             }
         }
+    }
+
+    public void AddHealth(int value)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
     }
 }
