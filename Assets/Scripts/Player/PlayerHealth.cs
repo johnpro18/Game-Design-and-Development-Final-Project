@@ -11,8 +11,8 @@ public class PlayerHealth : MonoBehaviour
 
     public HealthBar healthBar;
     public ShieldBar shieldBar;
-    protected Animator animator;
     private BoxCollider2D boxCollider;
+    protected Animator animator;
     private Rigidbody2D body;
 
     private void Awake()
@@ -22,7 +22,6 @@ public class PlayerHealth : MonoBehaviour
         currentShield = maxShield;
         healthBar.SetMaxHealth(maxHealth);
         shieldBar.SetMaxShield(maxShield);
-        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -80,5 +79,12 @@ public class PlayerHealth : MonoBehaviour
     public void AddHealth(int value)
     {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
+        healthBar.SetHealth(currentHealth);
+    }
+
+    public void AddShield(int value)
+    {
+        currentShield = Mathf.Clamp(currentShield + value, 0, maxShield);
+        shieldBar.SetShield(currentShield);
     }
 }
