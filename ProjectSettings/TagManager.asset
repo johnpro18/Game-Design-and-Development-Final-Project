@@ -44,6 +44,21 @@ TagManager:
   - name: Level - Background
     uniqueID: 1303294009
     locked: 0
+  - name: Level - Floor
+    uniqueID: 2270624201
+    locked: 0
+  - name: Level - Wall
+    uniqueID: 4014664253
+    locked: 0
+  - name: Collectibles
+    uniqueID: 1556642431
+    locked: 0
   - name: Player
     uniqueID: 3940909973
+    locked: 0
+  - name: Enemy
+    uniqueID: 2448745877
+    locked: 0
+  - name: Projectiles
+    uniqueID: 940837203
     locked: 0

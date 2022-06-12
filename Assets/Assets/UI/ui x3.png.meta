@@ -231,7 +231,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -267,7 +267,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -288,6 +288,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1736,11 +1748,11 @@ TextureImporter:
       ui x3_7: 7288474766852541511
       ui x3_6: -6780147777282436725
       ui x3_35: 4784127794540613854
-      ui x3_59: 7180358838094888883
       ui x3_61: -4680887720512613154
-      ui x3_39: -6602007435651271206
-      ui x3_16: 6662466343548354787
       ui x3_47: -768795254620210691
+      ui x3_16: 6662466343548354787
+      ui x3_59: 7180358838094888883
+      ui x3_39: -6602007435651271206
       ui x3_21: 6155055175875440689
       ui x3_62: -6315723485229485754
       ui x3_27: -1785140177843680679
