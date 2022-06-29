@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float projectileSpeed = 20f;
-    public int projectileDamage = 40;
+    [Header ("Projectile Parameters")]
+    [SerializeField] private float projectileSpeed = 20f;
+    [SerializeField] private int projectileDamage = 1;
     
     public Rigidbody2D body;
-    public GameObject impactEffect;
     
     // Start is called before the first frame update
     private void Start()
@@ -16,18 +16,16 @@ public class Projectile : MonoBehaviour
         body.velocity = transform.right * projectileSpeed;
     }
 
-    private void OnTriggerEvent(Collider2D hitInfo)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        /* Enemy enemy = hitInfo.GetComponent<Enemy>();
-
-        if(enemy != null)
+        if(collider.tag == "Enemy")
         {
-            enemy.TakeDamage(projectileDamage);
-        } */
-
-        Instantiate(impactEffect, transform.position, transform.rotation);
-
-        Destroy(gameObject);
+            collider.GetComponent<EnemyHealth>().TakeDamage(projectileDamage);
+            Destroy(gameObject);
+        }
+        else if(collider.tag == "Map")
+        {
+            Destroy(gameObject);
+        }
     }
-
 }

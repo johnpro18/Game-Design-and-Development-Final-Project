@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
-{
-    public int maxHealth = 10;
-    public int currentHealth;
+{   
+    [Header ("Health Parameters")]
+    [SerializeField] private int maxHealth = 10; 
+    [SerializeField] public HealthBar healthBar;
 
-    public HealthBar healthBar;
     private BoxCollider2D boxCollider;
-    protected Animator animator;
+    private Animator animator;
     private Rigidbody2D body;
+
+    private int currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -35,11 +37,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             animator.SetTrigger("Death");
-            //GetComponent<BoxCollider2D>().enabled = false;
-            Vector2 deathSize = new Vector2(0.5f, 0.3f);
-            boxCollider.size = deathSize;
-            /* GetComponent<PlayerMovement>().enabled = false;
-            GetComponent<PlayerWeapon>().enabled = false; */
+            Destroy(gameObject);
         }
     }
 }
