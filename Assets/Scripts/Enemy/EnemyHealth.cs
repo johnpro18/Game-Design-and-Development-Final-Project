@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {   
     [Header ("Health Parameters")]
-    [SerializeField] private int maxHealth = 10; 
+    [SerializeField] private int maxHealth = 1000; 
     [SerializeField] public HealthBar healthBar;
 
     private BoxCollider2D boxCollider;
@@ -30,14 +30,13 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
         {
             animator.SetTrigger("Death");
-            Destroy(gameObject);
         }
     }
 }
