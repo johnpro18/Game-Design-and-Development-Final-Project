@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinCollectibles : MonoBehaviour
 {
+    [Header ("Coin Parameters")]
     [SerializeField] private int coinValue = 1;
 
     public CoinsCounter coinsCounter;

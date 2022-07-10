@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShieldCollectibles : MonoBehaviour
 {
+    [Header ("Shield Parameters")]
     [SerializeField] private int shieldValue = 1;
 
     private void OnTriggerEnter2D(Collider2D collider)

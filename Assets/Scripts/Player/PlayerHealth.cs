@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 10;
-    public int currentHealth;
-    public int maxShield = 10;
-    public int currentShield; 
+    [Header ("Health Parameters")]
+    [SerializeField] private int maxHealth = 10;
+    [SerializeField] private int maxShield = 10;
 
-    public HealthBar healthBar;
-    public ShieldBar shieldBar;
-    private BoxCollider2D boxCollider;
-    protected Animator animator;
-    private Rigidbody2D body;
+    [Header ("UI Parameters")]
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private ShieldBar shieldBar;
+    [SerializeField] private GameObject defeatUI;
+
+    [Header ("Audio Parameters")]
+    [SerializeField] private AudioClip damageAudio;
+    [SerializeField] private AudioClip defeatAudio;
+
+    private int currentHealth;
+    private int currentShield; 
+
+    private Animator animator;
 
     private void Awake()
     {
@@ -24,54 +32,22 @@ public class PlayerHealth : MonoBehaviour
         shieldBar.SetMaxShield(maxShield);
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            TakeDamage(2);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && currentHealth <= 0)
-        {
-            Respawn();
-        }
-    }
-
-    public void Respawn()
-    {
-        healthBar.SetHealth(maxHealth);
-        shieldBar.SetShield(maxShield); currentHealth = maxHealth;
-        currentShield = maxShield;
-        healthBar.SetMaxHealth(maxHealth);
-        shieldBar.SetMaxShield(maxShield);
-        animator.SetTrigger("Idle");
-        GetComponent<PlayerMovement>().enabled = true;
-        GetComponent<PlayerWeapon>().enabled = true;
-    }
-
-
     public void TakeDamage(int damage)
     {
         if(currentShield > 0)
         {
             currentShield = Mathf.Clamp(currentShield - damage, 0, maxShield);
             shieldBar.SetShield(currentShield);
-            animator.SetTrigger("Hurt");
         }
         else
         {
             currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
             healthBar.SetHealth(currentHealth);
-            animator.SetTrigger("Hurt");
 
             if (currentHealth <= 0)
             {
                 animator.SetTrigger("Death");
-                //GetComponent<BoxCollider2D>().enabled = false;
-                Vector2 deathSize = new Vector2(0.5f, 0.3f);
-                boxCollider.size = deathSize;
-                GetComponent<PlayerMovement>().enabled = false;
-                GetComponent<PlayerWeapon>().enabled = false;
+                DefeatTrigger();
             }
         }
     }
@@ -86,5 +62,17 @@ public class PlayerHealth : MonoBehaviour
     {
         currentShield = Mathf.Clamp(currentShield + value, 0, maxShield);
         shieldBar.SetShield(currentShield);
+    }
+
+    public void DeleteObject()
+    {
+        GameObject.FindGameObjectWithTag("Player").SetActive(false);
+    }
+
+    public void DefeatTrigger()
+    {
+        Debug.Log("Dead");
+        defeatUI.SetActive(true);
+        AudioSource.PlayClipAtPoint(defeatAudio, transform.position);
     }
 }

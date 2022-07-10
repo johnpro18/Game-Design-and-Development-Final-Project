@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthCollectibles : MonoBehaviour
 {
+    [Header ("Health Parameters")]
     [SerializeField] private int healthValue = 1;
 
     private void OnTriggerEnter2D(Collider2D collider)
