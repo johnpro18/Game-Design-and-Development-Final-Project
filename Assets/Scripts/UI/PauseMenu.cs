@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {   
+    [Header ("UI Parameters")]
     [SerializeField] private GameObject pauseMenuUI;
     
     public static bool isPaused = false;
@@ -42,11 +43,12 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Resume();
+        Debug.Log("G003");
     }
 
     public void QuitGame()
     {
         Application.Quit();
-        Debug.Log("Quit");
+        Debug.Log("G001");
     }
 }

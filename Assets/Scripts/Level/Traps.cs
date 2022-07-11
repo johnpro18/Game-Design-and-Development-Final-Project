@@ -10,7 +10,7 @@ public class Traps : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider)
     {
         if(collider.tag == "Player")
-        {
+        {   
             collider.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
     }

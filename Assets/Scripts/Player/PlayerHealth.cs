@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject defeatUI;
 
     [Header ("Audio Parameters")]
+    [SerializeField] [Range(0, 1)] private float audioVolume; 
     [SerializeField] private AudioClip damageAudio;
     [SerializeField] private AudioClip defeatAudio;
 
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     private int currentShield; 
 
     private Animator animator;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -71,8 +73,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void DefeatTrigger()
     {
-        Debug.Log("Dead");
+        Debug.Log("P001");
         defeatUI.SetActive(true);
-        AudioSource.PlayClipAtPoint(defeatAudio, transform.position);
+        audioSource.PlayOneShot(defeatAudio, audioVolume);
     }
 }

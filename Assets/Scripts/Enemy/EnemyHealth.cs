@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             animator.SetTrigger("Death");
+            Debug.Log("E001");
         }
     }
 
