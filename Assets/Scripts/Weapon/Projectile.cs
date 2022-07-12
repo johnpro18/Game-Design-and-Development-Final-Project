@@ -6,8 +6,8 @@ public class Projectile : MonoBehaviour
 {
     [Header ("Projectile Parameters")]
     [SerializeField] private float projectileSpeed = 20f;
-    [SerializeField] private int projectileDamage = 1;
-    
+/*     [SerializeField] private int projectileDamage = 1;
+ */    
     public Rigidbody2D body;
     
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
     {
         if(collider.tag == "Enemy")
         {
-            collider.GetComponent<EnemyHealth>().TakeDamage(projectileDamage);
+            collider.GetComponent<EnemyHealth>().TakeDamage(2);
             Destroy(gameObject);
         }
         else if(collider.tag == "Map")

@@ -21,6 +21,12 @@ public class VictoryMenu : MonoBehaviour
         Debug.Log("G004");
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(1);
+        Debug.Log("G005");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
