@@ -23,7 +23,7 @@ public class VictoryMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
         Debug.Log("G005");
     }
 
